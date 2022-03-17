@@ -32,7 +32,10 @@
 	
 	<p> Press the button to create an new element of type div and then add it to the container.
 		</p>
-		<button onclick="makeNewDiv()">Add value</button>
+		<button class="btn btn-primary" onclick="makeNewDiv()">Add value</button>
+        <br>
+        <button class="btn btn-success" onclick="fetchItem()">Fetch</button>
+        <button class="btn btn-danger" onclick="zap()">Zap values</button>
 	
 	
 </body>
@@ -51,5 +54,29 @@
         container.insertBefore(element,container.firstChild)
 		
 	}
+    function fetchItem(){
+        var queueItems=document.getElementsByClassName("queue");
+        length=queueItems.length;
+        if(length>0){
+            for(let i=0; i< length;i++){
+                queueItems[length-1].remove();
+            }
+        }
+    }
+
+    function zap(){
+        let queueItems=document.getElementsByClassName("queue");
+        let len=queueItems.length
+        let item=document.getElementById("text").value;
+        for (let i=0;i<len;i++){
+            if (item==queueItems[i].innerHTML)
+            {
+                queueItems[i].remove()
+                console.log("We are getting rid of all the elements with that text")
+            }
+        }
+    }
+
+
 </script>
 </html>	
